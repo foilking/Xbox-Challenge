@@ -1,0 +1,93 @@
+﻿@using XboxChallenge.ViewModels
+@model GameCollection
+@{
+    ViewBag.Title = "What Game's Next?";
+}
+<div id="messages">
+</div>
+<h3>
+    Desired Games</h3>
+<div class="desiredGames">
+    @* We want something to notify users that ther are currently no games *@
+    @if (Model.Games.Count() == 0) 
+    {
+        <div id="noGames">
+            There are no games to vote on, please add a game.
+        </div>
+    }
+    @foreach (var game in Model.Games)
+    {
+        <div class="gameListingPanel">
+            <div id="@game.Title" class="gameTitlePanel">
+                Title: @game.Title
+            </div>
+            <div class="right votesPanel">
+                Current Votes: <span class="currentVoteCount">@game.Votes</span>
+            </div>
+            <div class="clear">
+            </div>
+            <div class="vote" id="@game.Id">
+                VOTE!
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+    }
+</div>
+<div class="clear">
+</div>
+<div class="addGame">
+    <label for="gameName">
+        Enter a game not on the list to add:</label>
+    <input id="gameName" type="text" />
+    <button id="addGame">
+        ADD GAME</button>
+</div>
+<div class="clear">
+</div>
+<script language="javascript">
+    jQuery(function ($) {
+        $('.vote').click(function (e) { @* Attaches a click event to all the vote divs *@
+            var gameVote = $(this); @* As we can't call $(this) in the function for success and get the same result,
+                                         so it's better to define it in a variable here. *@
+            var gameId = $(this).attr('id');
+            $.ajax({ @* I do love jQuery's AJAX implementation *@
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ gameId: gameId }), @* Stringify your data, as JSON's quite easy to understand *@
+                url: '@Url.Action("VoteForGame")', @* Url.Action creates the url to the method in the controller *@
+                success: function (result) {
+                    var success = "error";
+                    if (result.Success) {
+                        success = "success";
+                        var votes = gameVote.siblings(".votesPanel").children(".currentVoteCount"); @* Holy DOM manipulation, Batman *@
+                        var voteCount = parseInt(votes.text());
+                        voteCount = voteCount + 1;
+                        votes.text(voteCount);
+                        gameVote.addClass("upvote"); @* Make sure it looks like the vote has been counted *@
+                    }
+                    $('#messages').removeClass().addClass(success); @* Remove any old classes that don't need to be there *@
+                    $('#messages').text(result.Message);
+                }
+            });
+        });
+        $('#addGame').click(function (e) { @* Attaches a click event to the addGame button *@
+            var gameName = $('#gameName').val();
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ gameName: gameName }), @* Stringify your data, as JSON's quite easy to understand *@
+                url: '@Url.Action("AddGame")', @* Url.Action creates the url to the method in the controller *@
+                success: function (result) { 
+                    var success = "error";
+                    if (result.Success) { 
+                        success = "success";
+                        $('#gameName').val("");
+                    }
+                    $('#messages').removeClass().addClass(success); @* Remove any old classes that don't need to be there *@
+                    $('#messages').text(result.Message);
+                }
+            });
+        });
+    });
+</script>

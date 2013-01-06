@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XboxChallenge", "XboxChallenge\XboxChallenge.csproj", "{BEE18A88-5F62-4243-844A-5919361D6C4B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BEE18A88-5F62-4243-844A-5919361D6C4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BEE18A88-5F62-4243-844A-5919361D6C4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BEE18A88-5F62-4243-844A-5919361D6C4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BEE18A88-5F62-4243-844A-5919361D6C4B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,24 @@
+﻿@using XboxChallenge.ViewModels
+@model GameCollection
+@{
+    ViewBag.Title = "Owned Games | What Game's Next?";
+}
+<h2>
+    Owned Games</h2>
+<div class="ownedGames">
+    @* We want something to notify users that ther are currently no games *@
+    @if (Model.Games.Count() == 0)
+    {
+        <div id="noGames">
+            We don't own any games? Please fix this by adding and voting on games this week.
+        </div>
+    }
+    @foreach (var game in Model.Games)
+    {
+        <div id="@game.Title" class="gameTitle">
+            @game.Title
+        </div>
+        <div class="clear">
+        </div>
+    }
+</div>

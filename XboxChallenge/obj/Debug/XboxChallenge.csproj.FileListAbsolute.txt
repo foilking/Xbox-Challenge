@@ -1,0 +1,7 @@
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\bin\XboxChallenge.dll
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\bin\XboxChallenge.pdb
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\bin\EntityFramework.dll
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\bin\EntityFramework.xml
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\obj\Debug\ResolveAssemblyReference.cache
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\obj\Debug\XboxChallenge.dll
+C:\Users\kcurtis\Documents\Projects\Xbox Challenge\XboxChallenge\XboxChallenge\obj\Debug\XboxChallenge.pdb

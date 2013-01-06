@@ -1,0 +1,59 @@
+﻿@using XboxChallenge.ViewModels
+@model GameCollection
+@{
+    ViewBag.Title = "Approve Games | What Game's Next?";
+}
+<h2>
+    Approve Games</h2>
+<div id="messages">
+</div>
+<div class="desiredGames">
+    @* We want something to notify users that ther are currently no games *@
+    @if (Model.Games.Count() == 0)
+    {
+        <div id="noGames">
+            There are no games to vote on, please add a game.
+        </div>
+    }
+    @foreach (var game in Model.Games)
+    {
+        <div id="@game.Title" class="gameListing">
+            <div class="gameDescription">
+                <div class="gameTitle">
+                    Game Title: @game.Title
+                </div>
+                <div class="votes">
+                    Current Votes: @game.Votes
+                </div>
+            </div>
+            <div class="add" id="@game.Id" >
+                Add Game to Collection
+            </div>
+        </div>
+        <div class="clear">
+        </div>
+    }
+</div>
+<script language="javascript" type="text/javascript">
+    jQuery(function ($) { 
+        $('.add').click(function (e) { @* Attaches a click event to all the add divs *@
+            var game = $(this).parent();
+            var gameId = $(this).attr('id');
+            $.ajax({
+                type: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({ gameId: gameId }),
+                url: '@Url.Action("AddGameToCollection")',
+                success: function (result) {
+                    var success = "error";
+                    if (result.Success) {
+                        success = "success";
+                        game.hide();
+                    }
+                    $('#messages').removeClass().addClass(success); @* Remove any old classes that don't need to be there *@
+                    $('#messages').text(result.Message);
+                }
+            });
+        });
+    });
+</script>
