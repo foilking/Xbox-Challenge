@@ -6,7 +6,7 @@ This web site was originally done as a code challenge for a job application. The
 Without giving too much away, here are some of the specifications that were given for the project:
 
 ## Description
-ACME Software needs an application to track the interest in games for our Nintendo Wii. This web site will display the games we own, the games we would like to buy, and the number of votes for each game. Employees should be able to vote for their favorite game or add a new game to this list once per day. At the end of the week, if we bill enough hours, the game with the most votes will be purchased and marked as a game we currently own. The site   
+ACME Software needs an application to track the interest in games for our Xbox 360. This web site will display the games we own, the games we would like to buy, and the number of votes for each game. Employees should be able to vote for their favorite game or add a new game to this list once per day. At the end of the week, if we bill enough hours, the game with the most votes will be purchased and marked as a game we currently own. The site   
 
 ## Requirement
 * Display list of games that are wanted and owned
