@@ -9,9 +9,9 @@ namespace XboxChallenge.Models
 {
     public class GameLibrary
     {
-        private static readonly string CONNSTRING = "";
+        private readonly string CONNSTRING = "";
         
-        public static bool AddGame(string gameTitle)
+        public bool AddGame(string gameTitle)
         {
             /*
              * Depending on how the database is setup, this will vary.
@@ -29,7 +29,7 @@ namespace XboxChallenge.Models
             }
         }
 
-        public static IEnumerable<Game> GetAllGames()
+        public IEnumerable<Game> GetAllGames()
         {
             /*
              * Depending on how the database is setup, this will vary.
@@ -61,7 +61,7 @@ namespace XboxChallenge.Models
             return games;
         }
 
-        public static IEnumerable<Game> GetGamesByStatus(string status)
+        public IEnumerable<Game> GetGamesByStatus(string status)
         {
             /*
              * Depending on how the database is setup, this will vary.
@@ -92,7 +92,7 @@ namespace XboxChallenge.Models
             return games;
         }
 
-        public static bool VoteForGame(int gameId)
+        public bool VoteForGame(int gameId)
         {
             /*
              * Depending on how the database is setup, this will vary.
@@ -108,7 +108,7 @@ namespace XboxChallenge.Models
             }
         }
 
-        public static bool CheckIfGameExists(string gameTitle)
+        public bool CheckIfGameExists(string gameTitle)
         {
             using (var conn = new SqlConnection(CONNSTRING))
             using (var cmd = new SqlCommand("CheckIfGameExists", conn))
@@ -134,7 +134,7 @@ namespace XboxChallenge.Models
             }
         }
 
-        public static bool SetGameStatus(int gameId, string gameStatus)
+        public bool SetGameStatus(int gameId, string gameStatus)
         {
             /*
              * Depending on how the database is setup, this will vary.

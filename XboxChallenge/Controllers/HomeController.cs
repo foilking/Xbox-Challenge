@@ -21,9 +21,11 @@ namespace XboxChallenge.Controllers
         {
             _library = new GameLibrary();
             IEnumerable<Game> desiredGames = _library.GetGamesByStatus("wantit");
-            ViewBag.DesiredGames = desiredGames;
-            ViewBag.GameCount = desiredGames.Count();
-            return View();
+            GameCollection model = new GameCollection
+            {
+                Games = desiredGames
+            };
+            return View(model);
         }
 
         /*
@@ -135,9 +137,11 @@ namespace XboxChallenge.Controllers
         {
             _library = new GameLibrary();
             IEnumerable<Game> desiredGames = _library.GetGamesByStatus("wantit").OrderByDescending(game => game.Votes);
-            ViewBag.DesiredGames = desiredGames;
-            ViewBag.GameCount = desiredGames.Count();
-            return View();
+            GameCollection model = new GameCollection
+            {
+                Games = desiredGames
+            };
+            return View(model);
         }
 
         /*
@@ -170,9 +174,11 @@ namespace XboxChallenge.Controllers
         {
             _library = new GameLibrary();
             IEnumerable<Game> ownedGames = _library.GetGamesByStatus("gotit").OrderByDescending(game => game.Votes);
-            ViewBag.OwnedGames = ownedGames;
-            ViewBag.GameCount = ownedGames.Count();
-            return View();
+            GameCollection model = new GameCollection
+            {
+                Games = ownedGames
+            };
+            return View(model);
         }
     }
 }
